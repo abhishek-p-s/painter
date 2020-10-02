@@ -10,6 +10,8 @@ let brushColor="black";
 let brushSize=3;
 
 
+
+
 document.getElementById("color").addEventListener("change",function(){
     brushColor=this.value;
 });
@@ -19,6 +21,7 @@ document.getElementById("thickness").addEventListener("change",function(){
 });
 
 let painting=false;
+
 
 function paintingStart(e){
     painting=true;
@@ -42,8 +45,17 @@ function draw(e){
     ctx.strokeStyle=brushColor;
     ctx.stroke();
 
+  
 }
+var erase=document.getElementById("erase");
+erase.addEventListener("click",()=>{
+    ctx.fillStyle="white";
+    ctx.fillRect(0,0,1400,600);
+})
+
+
 
 canvas.addEventListener("mousedown",paintingStart);
 canvas.addEventListener("mouseup",paintingEnd);
 canvas.addEventListener("mousemove",draw);
+
